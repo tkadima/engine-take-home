@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import ContentCard from "../app/components/ContentCard";
 
 type AppProps = { 
@@ -7,8 +7,8 @@ type AppProps = {
 
 const App = ({contentCards}: AppProps) => {
     return <div>
-        <h1>Content Feed </h1>
-        <Grid container columns={{ md: 5 }}>
+        <Typography variant="h3" >Content Feed </Typography>
+        <Grid container columns={{ md: 4 }}>
         {contentCards.map(card => {
             return (<ContentCard key={card.id} imageUri={card.imageUri} textData={card.textData} comments={card.comments}/> )
           })}
