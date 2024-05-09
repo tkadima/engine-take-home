@@ -1,19 +1,21 @@
+import { Grid } from "@mui/material";
 import ContentCard from "../app/components/ContentCard";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
 
 type AppProps = { 
     contentCards: ContentCard[]
 }
-const theme = createTheme();
 
 const App = ({contentCards}: AppProps) => {
-    return <ThemeProvider theme={theme}><div>Home
-          {contentCards.map(card => {
+    return <div>
+        <h1>Content Feed </h1>
+        <Grid container columns={{ md: 5 }}>
+        {contentCards.map(card => {
             return (<ContentCard key={card.id} imageUri={card.imageUri} textData={card.textData} comments={card.comments}/> )
           })}
+        </Grid>
+         
 
-    </div></ThemeProvider>
+    </div>
 }
 
 export default App; 

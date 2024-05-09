@@ -1,36 +1,33 @@
-import {Card, CardContent, CardMedia, Typography } from '@mui/material';
+import {Card, CardActions, CardContent, CardMedia, Typography, IconButton, IconButtonProps } from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
 
 type ContentProps = {
     imageUri: string, 
     textData: TextData, 
     comments: Comment[]
 }
-const ContentCard = ({imageUri, textData, comments}: ContentProps) => {
+const ContentCard = ({imageUri, textData}: ContentProps) => {
 
-    return (<Card>
+    return (<Card sx={{ width: 345, margin: '10px'}}>
         <CardMedia
             image={imageUri}
             title={textData.title}
+            sx={{ height: 140 }}
         />
         <CardContent>
-            <Typography variant='h5' component="div">
+            <Typography variant='body1'>
             {textData.title}
             </Typography>
-            <Typography variant='h5' component="div">
-            {textData.subTitle}
-            </Typography>
-            <Typography variant='h5' component="div">
-            {textData.author.first} {textData.author.last}
-            </Typography>
-            <div>
-                <ul>
-                    {comments.map(comment => {
-                        return <li key={comment.text}>{comment.text}</li>
-                    })}
-                </ul>
-            </div>
-
         </CardContent>
+        <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="share">
+          <ShareIcon />
+        </IconButton>
+      </CardActions>
     </Card>)
  }
 
