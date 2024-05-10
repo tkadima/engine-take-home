@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { seedDatabase } from './mongo.mjs';
+import { seedDatabase } from '../utils/mongo.mjs';
 
 export async function fetchDataAndSeedDatabase() {
     console.log('gonna fetch and seed the data')
@@ -15,8 +15,11 @@ export async function fetchDataAndSeedDatabase() {
         const data = response.data.contentCards;
 
         await seedDatabase(data);
+        process.exit(0);
+
     } catch (error) {
         console.error('Error seeding database:', error);
+        process.exit(1);
     }
 }
 
