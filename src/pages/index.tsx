@@ -23,20 +23,11 @@ export default App;
 
 export async function getServerSideProps(){
     const BASE_URL = 'http://localhost:3000'
-    const res = await axios.get(`${BASE_URL}/api/data`);
-    console.log('res', res);
-    const contentCards: ContentCard[]= [];
+    const res = (await axios.get(`${BASE_URL}/api/data`)).data;
+    const contentCards: ContentCard[]= res;
     return { 
         props: {
             contentCards
         }
     } 
-    //const data = res.
-   // console.log('data', data); 
-    // const contentCards: ContentCard[] = data.contentCards;
-    //   return {
-    //     props: {
-    //         contentCards
-    //     }
-    //   };
 }
