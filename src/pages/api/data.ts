@@ -6,12 +6,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const db = client.db('engine');
     const collection = db.collection('content');
 
-    const data = {
-        contentCards: [
-            // api data 
-            
-        ]
-    };
+    if(req.method === 'POST') { 
 
-    res.status(200).json(data);
+    }
+    if(req.method === 'GET') {
+        res.status(200).json(collection.data); 
+    }
+
+
 }

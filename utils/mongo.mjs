@@ -7,13 +7,15 @@ let cachedClient;
 export async function connectToDatabase() {
     if (cachedClient) return cachedClient;
 
-    const client = await MongoClient.connect(uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
-
-    cachedClient = client;
-    return client;
+    try {
+        const client = await MongoClient.connect(uri);
+        cachedClient = client;
+        return client;  
+    } catch (error){
+        console.error('Error connecting to MongoDB:', error);
+        throw error; 
+    }
+   
 }
 
 export async function seedDatabase(data) {
@@ -25,6 +27,7 @@ export async function seedDatabase(data) {
         const result = await collection.insertMany(data);
 
         console.log(`${result.insertedCount} documents inserted into the database.`);
+        return result; 
     } catch (error) {
         console.error('Error seeding database:', error);
     }
