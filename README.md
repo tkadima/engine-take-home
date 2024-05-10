@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Setting Up Engine Locally with MongoDB
+## Setting Up Engine Take-home Locally
 
 Follow these steps to set up and run the Engine Take-home app locally and connect it to MongoDB:
 
@@ -56,8 +56,3 @@ npm run seed
    ```
 
 2. Open your web browser and navigate to `http://localhost:3000` to view your Next.js app.
-
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-.
