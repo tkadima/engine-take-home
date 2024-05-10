@@ -6,6 +6,8 @@ import { ScriptProps } from "next/dist/client/script";
 import { ParsedUrlQuery } from "querystring";
 import styles from '../styles.module.css';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
 
 const BASE_URL = 'http://localhost:3000';
 const PER_PAGE = 20; 
@@ -18,6 +20,7 @@ type AppProps = {
 export default function App({contentCards, totalPages}: AppProps)  {
     const [page, setPage] = useState<number>(1); 
     const [cards, setCards] = useState<ContentCard[]>(contentCards)
+    const router = useRouter();
 
     useEffect(() => {
         axios.get(`${BASE_URL}/api/data`, {
@@ -27,6 +30,7 @@ export default function App({contentCards, totalPages}: AppProps)  {
             }
         }).then((res) => {
             setCards(res.data.content);
+            router.push({ query: { page: page } }, undefined, { shallow: true }); // update URL params
         }).catch((error) => {
             console.error('Error:', error);
         });
