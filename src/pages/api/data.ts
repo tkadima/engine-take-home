@@ -17,7 +17,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const totalRecords = await collection.countDocuments();
             const totalPages = Math.ceil(totalRecords / itemsPerPage);
             
-            const content = await collection.find().skip(startIndex).limit(itemsPerPage).toArray();
+            const content = await collection
+                .find()
+                .sort({ 'metadata.priority': -1 })
+                .skip(startIndex)
+                .limit(itemsPerPage)
+                .toArray();
             
             res.status(200).json({ content, totalPages });
         } catch (error) {
