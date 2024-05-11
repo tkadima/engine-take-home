@@ -1,4 +1,4 @@
-import { Grid, Typography, Pagination } from "@mui/material";
+import { Pagination } from "@mui/material";
 import ContentCard from "../app/components/ContentCard";
 import axios from "axios";
 import { GetServerSideProps } from 'next';
@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 
 const BASE_URL = 'http://localhost:3000';
-const PER_PAGE = 20; 
+const PER_PAGE = 10; 
 
 type AppProps = { 
     contentCards: ContentCard[], 
@@ -30,21 +30,22 @@ export default function App({contentCards, totalPages}: AppProps)  {
             }
         }).then((res) => {
             setCards(res.data.content);
-            router.push({ query: { page: page } }, undefined, { shallow: true }); // update URL params
+            router.push({ query: { page: page } }, undefined, { shallow: true }); 
         }).catch((error) => {
             console.error('Error:', error);
         });
     }, [page]);
     
     
-    
     return <div className={styles.content_grid}>
-        <Typography variant="h3" >Content Feed </Typography>
-        <Grid container columns={{ md: 5 }}>
         {cards.map(card => {
-            return (<ContentCard key={card.id} imageUri={card.imageUri} textData={card.textData} comments={card.comments}/> )
+            return (<ContentCard key={card.id} 
+                    imageUri={card.imageUri} 
+                    textData={card.textData} 
+                    comments={card.comments}
+                    priority={card.metadata.priority} 
+                    publishDate={card.metadata.publishDate}/> )
           })}
-        </Grid>
         <div className={styles.content_grid_pagination}>
             <Pagination  count={totalPages} page={page} variant="outlined" size="large" onChange={(_e, pageNumber) => setPage(pageNumber)} />
         </div>
