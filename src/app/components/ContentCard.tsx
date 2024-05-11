@@ -143,7 +143,7 @@ type ContentCardProps = {
 const ContentCard = ({ imageUri, textData, priority, publishDate }: ContentCardProps) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-  function timeAgo(dateString: string): string {
+  const  timeAgo = (dateString: string): string  => {
     const today = new Date();
     const date = new Date(dateString); 
     const years = today.getFullYear() - date.getFullYear();
@@ -164,7 +164,7 @@ const ContentCard = ({ imageUri, textData, priority, publishDate }: ContentCardP
     <Card
       variant="outlined"
       sx={{
-        width: 600,
+        maxWidth: '500px',
         '--Card-radius': (theme) => theme.vars.radius.xs,
         marginBottom: '20px'
       }}
@@ -174,7 +174,7 @@ const ContentCard = ({ imageUri, textData, priority, publishDate }: ContentCardP
         <AspectRatio>
           <img src={imageUri} alt={textData.title} loading="lazy" />
         </AspectRatio>
-      </CardOverflow>
+        </CardOverflow>
       <Footer />
       <Content 
         textData={textData} 
