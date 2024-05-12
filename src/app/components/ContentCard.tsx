@@ -2,6 +2,7 @@ import { Card, CardContent, IconButton, Box, Link, Avatar, CardOverflow, Input, 
 import { BookmarkBorderRounded, Face, FavoriteBorder, ModeCommentOutlined, MoreHoriz, SendOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 import styles from '../../styles.module.css';
+import ContentModal from './ContentModal';
 
 const maxBodySize = 200;
 
@@ -23,8 +24,7 @@ const Header = ({ author }: HeaderProps) => (
           right: 0,
           m: '-2px',
           borderRadius: '50%',
-          background:
-            'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
+          background:'#CCC',
         },
       }}
     >
@@ -41,7 +41,7 @@ const Header = ({ author }: HeaderProps) => (
   </CardContent>
 );
 
-const Footer = () => (
+const Actions = () => (
   <CardContent orientation="horizontal" sx={{ alignItems: 'center', mx: -1 }}>
     <Box sx={{ width: 0, display: 'flex', gap: 0.5 }}>
       <IconButton variant="plain" color="neutral" size="sm">
@@ -115,7 +115,11 @@ const Content = ({ textData, isExpanded, setIsExpanded, priority, timeLapsed }: 
   </CardContent>
 );
 
-const CommentSection = () => (
+type CommentProps = {
+  newComment: string | null,
+  setNewComment: (comment: string) => void
+}
+const CommentInput = ({newComment, setNewComment}: CommentProps) => (
   <CardContent orientation="horizontal" sx={{ gap: 1 }}>
     <IconButton size="sm" variant="plain" color="neutral" sx={{ ml: -1 }}>
       <Face />
@@ -125,8 +129,9 @@ const CommentSection = () => (
       size="sm"
       placeholder="Add a comment…"
       sx={{ flex: 1, px: 0, '--Input-focusedThickness': '0px' }}
+      onChange={(e) => setNewComment(e.target.value)}
     />
-    <Link disabled underline="none" role="button">
+    <Link disabled={!newComment} underline="none" role="button">
       Post
     </Link>
   </CardContent>
@@ -140,8 +145,10 @@ type ContentCardProps = {
   publishDate: string
 }
 
-const ContentCard = ({ imageUri, textData, priority, publishDate }: ContentCardProps) => {
+const ContentCard = ({ imageUri, textData, priority, publishDate, comments }: ContentCardProps) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [newComment, setNewComment] = useState<string|null>(null); 
+  const [modalOpen, setModalOpen] = useState<boolean>(false); 
 
   const  timeAgo = (dateString: string): string  => {
     const today = new Date();
@@ -149,8 +156,7 @@ const ContentCard = ({ imageUri, textData, priority, publishDate }: ContentCardP
     const years = today.getFullYear() - date.getFullYear();
     const months = today.getMonth() - date.getMonth(); 
     const days = today.getDay() - date.getDay()
-    // I would continue with hours, and minutes but it's unnecessary given the data
-    // I would add the smaller denominations if I needed to enable creating posts
+
     if (years >= 1) { 
       return `${years} years ago`;
     }
@@ -175,14 +181,20 @@ const ContentCard = ({ imageUri, textData, priority, publishDate }: ContentCardP
           <img src={imageUri} alt={textData.title} loading="lazy" />
         </AspectRatio>
         </CardOverflow>
-      <Footer />
+      <Actions />
       <Content 
         textData={textData} 
         isExpanded={isExpanded} 
         setIsExpanded={setIsExpanded} 
         priority={priority} 
         timeLapsed={timeAgo(publishDate)} />
-      <CommentSection />
+        <CardContent orientation="horizontal" sx={{ gap: 1 }}>
+            <Link color="neutral" onClick={() => setModalOpen(true)}>
+              {comments.length === 1 ? `View Comment` :`View all ${comments.length} comments`}
+            </Link>
+          </CardContent>
+          <ContentModal isOpen={modalOpen} setIsOpen={setModalOpen} comments={comments} author={textData.author}/>
+      <CommentInput newComment={newComment} setNewComment={setNewComment}/>
     </Card>
   );
 };
