@@ -5,9 +5,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const client = await connectToDatabase();
     const db = client.db('engine');
     const collection = db.collection('content');
-    if(req.method === 'POST') { 
 
-    }
     if (req.method === 'GET') {
         const page = req.query.page ? parseInt(req.query.page as string, 10) : 1;
         const itemsPerPage = req.query.limit ? parseInt(req.query.limit as string, 10) : 20;
