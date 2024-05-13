@@ -1,5 +1,5 @@
 import { FavoriteBorder } from "@mui/icons-material";
-import { Avatar, Box, DialogContent, DialogTitle, Divider, IconButton, List, ListDivider, ListItem, 
+import { Avatar, DialogContent, DialogTitle, Divider, IconButton, List, ListDivider, ListItem, 
     ListItemDecorator, Modal, ModalDialog, Stack, Typography } from "@mui/joy"
 
 
