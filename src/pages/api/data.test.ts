@@ -30,14 +30,14 @@ describe('/api/data endpoint', () => {
     const db = mongoClient.db('engine');
     const collection = db.collection('content'); 
     
-    await collection.insertMany(sampleContent)
+    await collection.insertMany(sampleContent);
 
 
     for (const { page, limit, expectedContentLength, expectedTotalPages } of testCases) {
 
-      const req = { method: 'GET', query: { page, limit } } as any as NextApiRequest;
+      const req = { method: 'GET', query: { page, limit } } as unknown as NextApiRequest;
       
-      const res = { status: jest.fn().mockReturnThis(), json: jest.fn()} as any as NextApiResponse;
+      const res = { status: jest.fn().mockReturnThis(), json: jest.fn()} as unknown as NextApiResponse;
 
       await handler(req, res);
       

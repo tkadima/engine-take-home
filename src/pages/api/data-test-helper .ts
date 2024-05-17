@@ -79,7 +79,7 @@ export const sampleContent = [
         id: 20, 
         imageUrl: 'example.jpeg'
       }
-]
+];
 
 export type TestCase = {
     page?: number, 

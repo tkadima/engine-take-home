@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const itemsPerPage = req.query.limit ? parseInt(req.query.limit as string, 10) : 20;
 
-        const {startIndex, limit} = getPaginationParams(page, itemsPerPage)
+        const {startIndex, limit} = getPaginationParams(page, itemsPerPage);
 
         try {
             const totalRecords = await collection.countDocuments();

@@ -31,7 +31,7 @@ export default function App({ contentCards, totalPages: initialTotalPages }: App
 
   const { content, totalPages } = data;
 
-  const handlePageChange = (_e: any, pageNumber: number) => {
+  const handlePageChange = (_e: unknown, pageNumber: number) => {
     setPage(pageNumber);
     router.push({ query: { page: pageNumber } }, undefined, { shallow: true });
   };

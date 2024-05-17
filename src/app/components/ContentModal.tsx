@@ -1,6 +1,6 @@
 import { FavoriteBorder } from "@mui/icons-material";
 import { Avatar, DialogContent, DialogTitle, Divider, IconButton, List, ListDivider, ListItem, 
-     Modal, ModalDialog, Stack, Typography } from "@mui/joy"
+     Modal, ModalDialog, Stack, Typography } from "@mui/joy";
 import { Grid } from "@mui/material";
 import  styles  from '../../styles.module.css'; 
 
@@ -57,5 +57,5 @@ const ContentModal = ({comments, isOpen, setIsOpen} : ContentModalProps) => (
             </DialogContent>
         </ModalDialog>
     </Modal>
-)
+);
 export default ContentModal; 

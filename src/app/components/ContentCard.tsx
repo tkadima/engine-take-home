@@ -155,7 +155,7 @@ const ContentCard = ({ imageUri, textData, priority, publishDate, comments }: Co
     const date = new Date(dateString); 
     const years = today.getFullYear() - date.getFullYear();
     const months = today.getMonth() - date.getMonth(); 
-    const days = today.getDay() - date.getDay()
+    const days = today.getDay() - date.getDay();
 
     if (years >= 1) { 
       return `${years} years ago`;
@@ -164,7 +164,7 @@ const ContentCard = ({ imageUri, textData, priority, publishDate, comments }: Co
       return `${months} months ago`;
     }
     return `${days} days ago`; 
-  }
+  };
 
   return (
     <Card
