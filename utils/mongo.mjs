@@ -20,7 +20,7 @@ export async function connectToDatabase() {
     }
 }
 
-function cleanAndNormalizeData(data) {
+export function cleanAndNormalizeData(data) {
     const imageUriPattern = /^https:\/\/picsum\.photos\/[1-5]00\/[1-5]00$/;
 
     return data.map(item => {
