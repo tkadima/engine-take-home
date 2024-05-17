@@ -51,7 +51,7 @@ const ContentModal = ({comments, isOpen, setIsOpen} : ContentModalProps) => (
             <DialogContent className={styles.modalDialog}>
                 <List>
                     {
-                        comments.map(comment => <Comment comment={comment}/>)
+                        comments.map(comment => <Comment key={comment.text} comment={comment}/>)
                     } 
                 </List>
             </DialogContent>
