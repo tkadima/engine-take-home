@@ -54,8 +54,9 @@ npm run seed
    ```
    npm run dev
    ```
+Open your web browser and navigate to `http://localhost:3000` to view your Next.js app.
 
-# Running Tests
+# How to Run Tests
 
 ## Testing Framework
 
@@ -67,9 +68,4 @@ To run the tests, use the following command:
 
 ```sh
 npm run test
-```
-## Test Configuration
-
-
-
-Open your web browser and navigate to `http://localhost:3000` to view your Next.js app.
+``
