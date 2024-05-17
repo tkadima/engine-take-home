@@ -36,7 +36,7 @@ export default function App({contentCards, totalPages}: AppProps)  {
     }, [page]);
     
     
-    return <div className={styles.content_grid}>
+    return <div className={styles.content_feed}>
         {cards.map(card => {
             return (<ContentCard key={card.id} 
                     imageUri={card.imageUri} 
