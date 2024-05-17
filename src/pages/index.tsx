@@ -35,20 +35,20 @@ export default function App({ contentCards, totalPages: initialTotalPages }: App
         setPage(pageNumber);
         router.push({ query: { page: pageNumber } }, undefined, { shallow: true });
     };
-
     return (
         <div className={styles.content_feed}>
-            {content.map((card: ContentCard )=> (
-                <ContentCard
-                    key={card.id}
-                    imageUri={card.imageUri}
-                    textData={card.textData}
-                    comments={card.comments}
-                    priority={card.metadata.priority}
-                    publishDate={card.metadata.publishDate}
-                />
+            {content.map((card: ContentCard) => (
+                <div key={card.id} className={styles.content_card}>
+                    <ContentCard
+                        imageUri={card.imageUri}
+                        textData={card.textData}
+                        comments={card.comments}
+                        priority={card.metadata.priority}
+                        publishDate={card.metadata.publishDate}
+                    />
+                </div>
             ))}
-            <div className={styles.content_grid_pagination}>
+            <div className={styles.content_feed_pagination}>
                 <Pagination
                     count={totalPages}
                     page={page}

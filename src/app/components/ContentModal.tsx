@@ -2,6 +2,7 @@ import { FavoriteBorder } from "@mui/icons-material";
 import { Avatar, DialogContent, DialogTitle, Divider, IconButton, List, ListDivider, ListItem, 
      Modal, ModalDialog, Stack, Typography } from "@mui/joy"
 import { Grid } from "@mui/material";
+import  styles  from '../../styles.module.css'; 
 
 type CommentProps = {
     comment: Comment; 
@@ -47,7 +48,7 @@ const ContentModal = ({comments, isOpen, setIsOpen} : ContentModalProps) => (
         <ModalDialog>
             <DialogTitle>Comments</DialogTitle>
             <Divider inset="none" />
-            <DialogContent>
+            <DialogContent className={styles.modalDialog}>
                 <List>
                     {
                         comments.map(comment => <Comment comment={comment}/>)

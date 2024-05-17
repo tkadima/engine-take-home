@@ -1,3 +1,51 @@
-.content_feed { 
-    margin-left: 30%;
+.content_feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+    width: 100%;
+    max-width: 600px; 
 }
+
+.content_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.content_feed_pagination {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .content_feed {
+        padding: 10px;
+    }
+}
+
+.modalDialog {
+    max-width: 600px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .modalDialog {
+        width: 90%;
+        padding: 10px;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .modalDialog {
+        width: 95%;
+        padding: 5px;
+    }
+}
+
