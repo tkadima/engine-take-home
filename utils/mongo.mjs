@@ -5,15 +5,18 @@ const uri = 'mongodb://localhost:27017';
 let cachedClient;
 
 export async function connectToDatabase() {
-    if (cachedClient) return cachedClient;
+    if (cachedClient && cachedClient.topology && cachedClient.topology.isConnected()) {
+        return cachedClient;
+    }
 
     try {
-        const client = await MongoClient.connect(uri);
+        const client = new MongoClient(uri);
+        await client.connect();
         cachedClient = client;
-        return client;  
-    } catch (error){
+        return client;
+    } catch (error) {
         console.error('Error connecting to MongoDB:', error);
-        throw error; 
+        throw error;
     }
 }
 
@@ -24,10 +27,10 @@ export async function seedDatabase(data) {
         const collection = db.collection('content');
 
         const result = await collection.insertMany(data);
-
         console.log(`${result.insertedCount} documents inserted into the database.`);
-        return result; 
+        return result;
     } catch (error) {
         console.error('Error seeding database:', error);
+        throw error;
     }
 }

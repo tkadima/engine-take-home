@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { seedDatabase } from '../utils/mongo.mjs';
+import { seedDatabase, connectToDatabase } from '../utils/mongo.mjs';
 
 export async function fetchDataAndSeedDatabase() {
+    let client;
     try {
         const response = await axios.get('https://stoplight.io/mocks/engine/fullstack-spec/52502230/content', {
             headers: {
@@ -9,16 +10,33 @@ export async function fetchDataAndSeedDatabase() {
                 Prefer: 'code=200, dynamic=true'
             }
         });
-        
+
         const data = response.data.contentCards;
-
+        client = await connectToDatabase();
         await seedDatabase(data);
-        process.exit(0);
-
+        await createIndex();
     } catch (error) {
         console.error('Error seeding database:', error);
         process.exit(1);
+    } finally {
+        if (client) {
+            await client.close();
+        }
+        process.exit(0);
     }
 }
 
-await fetchDataAndSeedDatabase()
+async function createIndex() {
+    try {
+        const client = await connectToDatabase();
+        const db = client.db('engine');
+        const collection = db.collection('content');
+        await collection.createIndex({ 'metadata.priority': 1 });
+        console.log('Index created on metadata.priority');
+    } catch (error) {
+        console.error('Error creating index:', error);
+        throw error;
+    }
+}
+
+await fetchDataAndSeedDatabase();

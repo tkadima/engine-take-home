@@ -30,7 +30,7 @@ const Header = ({ author }: HeaderProps) => (
     >
       <Avatar
         size="sm"
-        src="/static/logo.png"
+        src=""
         sx={{ p: 0.5, border: '2px solid', borderColor: 'background.body' }}
       />
     </Box>
