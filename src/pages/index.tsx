@@ -7,10 +7,10 @@ import { ParsedUrlQuery } from "querystring";
 import styles from '../styles.module.css';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-
+import { getPaginationParams } from '../utils/pagination';
 
 const BASE_URL = 'http://localhost:3000';
-const PER_PAGE = 10; 
+const PER_PAGE = 20; 
 
 type AppProps = { 
     contentCards: ContentCard[], 
@@ -26,7 +26,6 @@ export default function App({contentCards, totalPages}: AppProps)  {
         axios.get(`${BASE_URL}/api/data`, {
             params: {
                 page: page,
-                limit: PER_PAGE
             }
         }).then((res) => {
             setCards(res.data.content);
@@ -55,15 +54,9 @@ export default function App({contentCards, totalPages}: AppProps)  {
 
 export const getServerSideProps: GetServerSideProps<ScriptProps, ParsedUrlQuery> = async ({ query }) => {
     const page = query.page ? parseInt(query.page as string, 10) : 1;
-    const itemsPerPage = 20;
-
-    const startIndex = (page - 1) * itemsPerPage;
 
     const res = await axios.get(`${BASE_URL}/api/data`, {
-        params: {
-            start: startIndex,
-            limit: itemsPerPage
-        }
+        params: getPaginationParams(page, PER_PAGE)
     });
 
     const contentCards: ContentCard[] = res.data.content;

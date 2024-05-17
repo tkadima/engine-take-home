@@ -89,8 +89,8 @@ const Content = ({ textData, isExpanded, setIsExpanded, priority, timeLapsed }: 
         fontWeight="lg"
         textColor="text.primary"
       >
-        {textData.subTitle}
-      </Link>{' '}
+        {textData.title}
+      </Link>
       {isExpanded ? textData.body : textData.body.slice(0, maxBodySize)}
       <Link
       component="button"
@@ -178,7 +178,7 @@ const ContentCard = ({ imageUri, textData, priority, publishDate, comments }: Co
       <Header author={textData.author} />
       <CardOverflow>
         <AspectRatio>
-          <img src={imageUri} alt={textData.title} loading="lazy" />
+          <img src={imageUri} alt={textData.subTitle} loading="lazy" />
         </AspectRatio>
         </CardOverflow>
       <Actions />
