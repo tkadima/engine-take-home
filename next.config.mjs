@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {async rewrites() {
-    return [];
-},};
-
-
-
-export default nextConfig;
+const nextConfig = {
+    images: {
+      domains: ['picsum.photos'], 
+    },
+    async rewrites() {
+      return [];
+    },
+  };
+  
+  export default nextConfig;
+  

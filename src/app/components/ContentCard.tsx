@@ -3,6 +3,7 @@ import { BookmarkBorderRounded, Face, FavoriteBorder, ModeCommentOutlined, MoreH
 import { useState } from 'react';
 import styles from '../../styles.module.css';
 import ContentModal from './ContentModal';
+import Image from 'next/image';
 
 const maxBodySize = 200;
 
@@ -166,6 +167,11 @@ const ContentCard = ({ imageUri, textData, priority, publishDate, comments }: Co
     return `${days} days ago`; 
   };
 
+  const [, widthStr, heightStr] = imageUri.match(/\/(\d+)\/(\d+)/) || [];
+  const width = parseInt(widthStr, 10);
+  const height = parseInt(heightStr, 10);
+
+
   return (
     <Card
       variant="outlined"
@@ -178,7 +184,7 @@ const ContentCard = ({ imageUri, textData, priority, publishDate, comments }: Co
       <Header author={textData.author} />
       <CardOverflow>
         <AspectRatio>
-          <img src={imageUri} alt={textData.subTitle} loading="lazy" />
+          <Image src={imageUri} alt={textData.subTitle} loading="lazy" width={width} height={height}/>
         </AspectRatio>
         </CardOverflow>
       <Actions />
