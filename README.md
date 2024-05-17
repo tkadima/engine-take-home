@@ -55,4 +55,21 @@ npm run seed
    npm run dev
    ```
 
-2. Open your web browser and navigate to `http://localhost:3000` to view your Next.js app.
+# Running Tests
+
+## Testing Framework
+
+This project uses [Jest](https://jestjs.io/) for testing, with support for both TypeScript and ES modules.
+
+## Running Tests
+
+To run the tests, use the following command:
+
+```sh
+npm run test
+```
+## Test Configuration
+
+
+
+Open your web browser and navigate to `http://localhost:3000` to view your Next.js app.
