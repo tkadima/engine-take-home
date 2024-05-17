@@ -66,8 +66,8 @@ export async function seedDatabase(data) {
         const client = await connectToDatabase();
         const db = client.db('engine');
         const collection = db.collection('content');
-        const cleanData = cleanAndNormalizeData(cleanData); 
-        const result = await collection.insertMany(data);
+        const cleanData = cleanAndNormalizeData(data); 
+        const result = await collection.insertMany(cleanData);
         console.log(`${result.insertedCount} documents inserted into the database.`);
         return result;
     } catch (error) {

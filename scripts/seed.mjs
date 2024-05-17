@@ -7,7 +7,7 @@ export async function fetchDataAndSeedDatabase() {
         const response = await axios.get('https://stoplight.io/mocks/engine/fullstack-spec/52502230/content', {
             headers: {
                 Accept: 'application/json',
-                Prefer: 'code=200, dynamic=true'
+                Prefer: 'code=200'
             }
         });
 

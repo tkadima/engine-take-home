@@ -92,7 +92,9 @@ const Content = ({ textData, isExpanded, setIsExpanded, priority, timeLapsed }: 
       >
         {textData.title}
       </Link>
+      <Typography className={styles.content_card_body}>
       {isExpanded ? textData.body : textData.body.slice(0, maxBodySize)}
+      </Typography>
       <Link
       component="button"
       underline="none"

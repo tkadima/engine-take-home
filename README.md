@@ -68,4 +68,3 @@ To run the tests, use the following command:
 
 ```sh
 npm run test
-``
