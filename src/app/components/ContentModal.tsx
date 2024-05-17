@@ -1,7 +1,6 @@
 import { FavoriteBorder } from "@mui/icons-material";
 import { Avatar, DialogContent, DialogTitle, Divider, IconButton, List, ListDivider, ListItem, 
      Modal, ModalDialog, Stack, Typography } from "@mui/joy"
-import styles from '../../styles.module.css';
 import { Grid } from "@mui/material";
 
 type CommentProps = {
