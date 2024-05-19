@@ -25,7 +25,7 @@ Follow these steps to set up and run the Engine Take-home app locally and connec
 
 ### Step 3: Set Up MongoDB
 
-1. Install MongoDB on your local machine following the instructions provided in the MongoDB section of this README.
+1. Install MongoDB on your local machine. You can download it from [MongoDB Community Download](https://www.mongodb.com/try/download/community).
 
 2. Start MongoDB by running the following command in your terminal:
    ```
@@ -34,7 +34,7 @@ Follow these steps to set up and run the Engine Take-home app locally and connec
 
 ### Step 4: Configure MongoDB Connection
 
-1. Open the `mongo.mjs` file in your project directory.
+1. Open the `/utils/mongo.mjs` file.
 
 2. Update the MongoDB connection string to connect to the MongoDB server running locally. By default, the connection string is:
    ```javascript
