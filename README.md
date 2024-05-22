@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Setting Up Engine Take-home Locally
+## Setting Up Instagram Replica
 
 Follow these steps to set up and run the Engine Take-home app locally and connect it to MongoDB:
 
