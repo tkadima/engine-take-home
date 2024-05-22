@@ -2,20 +2,20 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Setting Up Instagram Replica
 
-Follow these steps to set up and run the Engine Take-home app locally and connect it to MongoDB:
+Follow these steps to set up and run the instagram-replica app locally and connect it to MongoDB:
 
 ### Step 1: Clone the Repository
 
 1. Clone the repository to your local machine using Git:
    ```
-   git clone https://github.com/tkadima/engine-take-home.git
+   git clone https://github.com/tkadima/instagram-replica.git
    ```
 
 ### Step 2: Install Dependencies
 
 1. Navigate to the project directory:
    ```
-   cd engine-take-home
+   cd instagram-replica
    ```
 
 2. Install project dependencies using npm:
