@@ -27,7 +27,7 @@ describe('/api/data endpoint', () => {
   });
 
   it('should return content and total pages', async () => {
-    const db = mongoClient.db('engine');
+    const db = mongoClient.db('instagram-replica-db');
     const collection = db.collection('content'); 
     
     await collection.insertMany(sampleContent);

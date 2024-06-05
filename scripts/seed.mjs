@@ -29,7 +29,7 @@ export async function fetchDataAndSeedDatabase() {
 async function createIndex() {
     try {
         const client = await connectToDatabase();
-        const db = client.db('engine');
+        const db = client.db('instagram-replica-db')
         const collection = db.collection('content');
         await collection.createIndex({ 'metadata.priority': 1 });
         console.log('Index created on metadata.priority');

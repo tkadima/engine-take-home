@@ -4,7 +4,7 @@ import { getPaginationParams } from '../../utils/pagination';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const client = await connectToDatabase();
-    const db = client.db('engine');
+    const db = client.db('instagram-replica-db');
     const collection = db.collection('content');
 
     if (req.method === 'GET') {

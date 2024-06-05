@@ -64,7 +64,7 @@ export function cleanAndNormalizeData(data) {
 export async function seedDatabase(data) {
     try {
         const client = await connectToDatabase();
-        const db = client.db('engine');
+        const db = client.db('instagram-replica-db');
         const collection = db.collection('content');
         const cleanData = cleanAndNormalizeData(data); 
         const result = await collection.insertMany(cleanData);
