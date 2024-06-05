@@ -1,6 +1,9 @@
 # Use an official Node.js runtime as a parent image
 FROM node:18
 
+# Install netcat
+RUN apt-get update && apt-get install -y netcat-traditional
+
 # Set the working directory
 WORKDIR /usr/src/app
 

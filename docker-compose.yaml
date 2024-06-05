@@ -31,5 +31,16 @@ services:
         max-file: "10"
     command: ["npm", "run", "dev"]
 
+  seed:
+    build: .
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/instagram-replica
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+    command: ["npm", "run", "seed"]
+    entrypoint: ["sh", "-c", "while ! nc -z mongo 27017; do sleep 1; done; npm run seed"]
+
 volumes:
   mongo-data:
