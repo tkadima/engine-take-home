@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const uri = 'mongodb://localhost:27017';
+const uri = process.env.MONGODB_URI || 'mongodb://mongo:27017/instagram-replica';
 
 let cachedClient;
 
@@ -11,7 +11,9 @@ export async function connectToDatabase() {
 
     try {
         const client = new MongoClient(uri);
+        console.log('CLIENT CREATED ')
         await client.connect();
+        console.log('CLIENT CONNECTED')
         cachedClient = client;
         return client;
     } catch (error) {
