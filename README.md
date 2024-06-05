@@ -1,8 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
 ## Setting Up Instagram Replica
 
-Follow these steps to set up and run the instagram-replica app locally and connect it to MongoDB:
+Follow these steps to set up and run the instagram-replica app locally and connect it to MongoDB. The following are local setup instructions to use Docker, follow the instructions for running with Docker below
 
 ### Step 1: Clone the Repository
 
@@ -55,6 +56,19 @@ npm run seed
    npm run dev
    ```
 Open your web browser and navigate to `http://localhost:3000` to view your Next.js app.
+
+# How to run the app using Docker 
+### Run with Docker
+1. Build and start container
+Run the following command in the terminal while in the project directory 
+```sh 
+docker-compose up --build
+```
+2. Run the seed script (as needed)
+This step only needs to be done once after the first local build
+```sh
+docker-compose run seed
+```
 
 # How to Run Tests
 
