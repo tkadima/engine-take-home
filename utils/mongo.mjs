@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const uri = process.env.MONGODB_URI || 'mongodb://mongo:27017/instagram-replica';
+const uri = 'mongodb://mongo:27017/instagram-replica';
 
 let cachedClient;
 
