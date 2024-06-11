@@ -14,7 +14,7 @@ const Comment = ({ comment }: CommentProps) => (
                 <Avatar size="sm" src={comment.profilePic} />
             </Grid>
             <Grid item xs="auto" style={{ marginLeft: 10 }}>
-                <Typography color="neutral" fontSize="sm" fontWeight="xl">{comment.author}</Typography>
+                <Typography color="neutral" fontSize="sm" fontWeight="xl">{comment.author.userName}</Typography>
             </Grid>
             <Grid item xs style={{ marginLeft: 20 }}>
                 <Typography>{comment.text}</Typography>
@@ -36,7 +36,7 @@ type ContentModalProps = {
     comments: Comment[],
     isOpen: boolean,
     setIsOpen: (open: boolean) => void,
-    author: Author
+    author: User
     
 }
 

@@ -1,30 +1,27 @@
-interface Author {
-    first: string;
-    last: string;
+interface User {
+    id: number;
+    userName: string; 
+    profilePicUrl: string; 
 }
 
-interface TextData {
-    author: Author;
-    subTitle: string;
-    title: string;
-    body: string;
-}
 
 interface Comment {
-    author: string;
+    id: number; 
+    author: User;
     likes: number;
     profilePic: string;
     text: string;
+    replies: Comment[];
+    publishDate: Date; 
 }
 
-interface Metadata {
-    publishDate: string;
-    priority: number;
-}
-interface ContentCard {
+
+interface Post {
     id: string;
     imageUri: string;
-    textData: TextData;
-    metadata: Metadata;
     comments: Comment[];
+    publishDate: Date; 
+    author: User;
+    caption: string;
+    numberOfLikes: number;
 }
