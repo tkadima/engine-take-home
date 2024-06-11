@@ -78,7 +78,7 @@ export async function seedDatabase(data) {
     try {
         const client = await connectToDatabase();
         const db = client.db('instagram-replica-db');
-        const collection = db.collection('content');
+        const collection = db.collection('content'); // change to posts
        // const cleanData = cleanAndNormalizeData(data); 
         const result = await collection.insertMany(data);
         console.log(`${result.insertedCount} documents inserted into the database.`);
