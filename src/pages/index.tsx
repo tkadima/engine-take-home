@@ -26,9 +26,13 @@ export default function App({ posts: content, totalPages: initialTotalPages }: A
     fallbackData: { posts: content, totalPages: initialTotalPages }
   });
 
+
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
+  const {posts, totalPages } = data;
+
+  //if (!posts || posts.length === 0) return <div>No posts available</div>
 
   const handlePageChange = (_e: unknown, pageNumber: number) => {
     setPage(pageNumber);
@@ -37,7 +41,7 @@ export default function App({ posts: content, totalPages: initialTotalPages }: A
 
   return (
     <div className={styles.content_feed}>
-      {data.content?.map((card: Post) => (
+      {posts.map((card: Post) => (
         <div key={card.id} className={styles.content_card}>
           <ContentCard
             cardData={card}
@@ -46,7 +50,7 @@ export default function App({ posts: content, totalPages: initialTotalPages }: A
       ))}
       <div className={styles.content_grid_pagination}>
         <Pagination
-          count={data.totalPages}
+          count={totalPages}
           page={page}
           variant="outlined"
           size="large"
@@ -64,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     params: getPaginationParams(page, PER_PAGE)
   });
 
-  const posts: Post[] = res.data.content;
+  const posts: Post[] = res.data.posts;
   const totalPages = res.data.totalPages;
 
   return {

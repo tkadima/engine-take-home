@@ -21,8 +21,8 @@
 }
 
 .content_card_body { 
-    word-break: break-all;
-    overflow-wrap: break-word;
+    /* word-break: break-all; */
+    /* overflow-wrap: break-word; */
     padding: 8px; 
 }
 

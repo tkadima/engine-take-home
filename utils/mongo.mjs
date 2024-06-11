@@ -60,10 +60,8 @@ export async function connectToDatabase() {
 //     });
 // }
 
-
 export async function dropDatabase() {
     try {
-        await dropDatabase();
         const client = await connectToDatabase();
         const db = client.db('instagram-replica-db');
         await db.dropDatabase();
@@ -76,9 +74,10 @@ export async function dropDatabase() {
 
 export async function seedDatabase(data) {
     try {
+        await dropDatabase();
         const client = await connectToDatabase();
         const db = client.db('instagram-replica-db');
-        const collection = db.collection('content'); // change to posts
+        const collection = db.collection('posts');
        // const cleanData = cleanAndNormalizeData(data); 
         const result = await collection.insertMany(data);
         console.log(`${result.insertedCount} documents inserted into the database.`);

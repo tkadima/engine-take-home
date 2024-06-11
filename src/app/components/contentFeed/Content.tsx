@@ -1,7 +1,7 @@
 import { CardContent, Link, Typography } from "@mui/joy";
 import styles from '../../../styles.module.css'
 
-const maxBodySize = 200;
+const maxBodySize = 100;
 
 type ContentProps = { 
     authorUserName: string; 
@@ -11,6 +11,7 @@ type ContentProps = {
     setIsExpanded: (expanded: boolean) => void;
     timeLapsed: string,
   }
+
   
   const Content = ({ authorUserName, caption, isExpanded, setIsExpanded, numberOfLikes, timeLapsed }: ContentProps) => (
     <CardContent>
@@ -32,7 +33,7 @@ type ContentProps = {
         >
           {authorUserName}
         </Link>
-        <Typography className={styles.content_card_body}>
+        <Typography className={styles.content_card_body }>
         {isExpanded ? caption : caption.slice(0, maxBodySize)}
         </Typography>
         <Link
