@@ -1,5 +1,5 @@
 import { CardContent, Link, Typography } from "@mui/joy";
-import styles from '../../styles.module.css';
+import styles from '../../../styles.module.css'
 
 const maxBodySize = 200;
 

@@ -12,13 +12,13 @@ const BASE_URL = 'http://localhost:3000';
 const PER_PAGE = 20;
 
 type AppProps = {
-  content : Post[];
+  posts : Post[];
   totalPages: number;
 };
 
 const fetcher = (url: string) => axios.get(url).then(res => res.data);
 
-export default function App({ content, totalPages: initialTotalPages }: AppProps) {
+export default function App({ posts: content, totalPages: initialTotalPages }: AppProps) {
   const [page, setPage] = useState<number>(1);
   const router = useRouter();
 
@@ -29,7 +29,6 @@ export default function App({ content, totalPages: initialTotalPages }: AppProps
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
-  const { posts, totalPages } = data;
 
   const handlePageChange = (_e: unknown, pageNumber: number) => {
     setPage(pageNumber);
@@ -38,7 +37,7 @@ export default function App({ content, totalPages: initialTotalPages }: AppProps
 
   return (
     <div className={styles.content_feed}>
-      {posts.map((card: Post) => (
+      {data.content?.map((card: Post) => (
         <div key={card.id} className={styles.content_card}>
           <ContentCard
             cardData={card}
@@ -47,7 +46,7 @@ export default function App({ content, totalPages: initialTotalPages }: AppProps
       ))}
       <div className={styles.content_grid_pagination}>
         <Pagination
-          count={totalPages}
+          count={data.totalPages}
           page={page}
           variant="outlined"
           size="large"

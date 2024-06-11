@@ -20,23 +20,24 @@ const ContentCard = ({ cardData }: ContentCardProps) => {
   const { author, caption, comments, imageUri, numberOfLikes, publishDate } = cardData; 
 
   const  timeAgo = (date: Date): string  => {
-    const today = new Date();
-    const years = today.getFullYear() - date.getFullYear();
-    const months = today.getMonth() - date.getMonth(); 
-    const days = today.getDay() - date.getDay();
+    // const today = new Date();
+    // const years = today.getFullYear() - date.getFullYear();
+    // const months = today.getMonth() - date.getMonth(); 
+    // const days = today.getDay() - date.getDay();
 
-    if (years >= 1) { 
-      return `${years} years ago`;
-    }
-    if (months < 12) { 
-      return `${months} months ago`;
-    }
-    return `${days} days ago`; 
+    // if (years >= 1) { 
+    //   return `${years} years ago`;
+    // }
+    // if (months < 12) { 
+    //   return `${months} months ago`;
+    // }
+    // return `${days} days ago`; 
+    return "3 days ago"; 
   };
 
-  const [, widthStr, heightStr] = imageUri.match(/\/(\d+)\/(\d+)/) || [];
-  const width = parseInt(widthStr, 10);
-  const height = parseInt(heightStr, 10);
+  // const [, widthStr, heightStr] = imageUri.match(/\/(\d+)\/(\d+)/) || [];
+  // const width = parseInt(widthStr, 10);
+  // const height = parseInt(heightStr, 10);
 
   const Actions = () => (
     <CardContent orientation="horizontal" sx={{ alignItems: 'center', mx: -1 }}>
@@ -72,7 +73,7 @@ const ContentCard = ({ cardData }: ContentCardProps) => {
       <Header author={author} />
       <CardOverflow>
         <AspectRatio>
-          <Image src={author.profilePicUrl} alt={author.userName} loading="lazy" width={width} height={height}/>
+          <img src={author.profilePicUrl} alt={author.userName}/>
         </AspectRatio>
         </CardOverflow>
       <Actions />

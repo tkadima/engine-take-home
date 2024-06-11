@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const client = await connectToDatabase();
     const db = client.db('instagram-replica-db');
     const collection = db.collection('content');
-
+    
     if (req.method === 'GET') {
         const page = req.query.page ? parseInt(req.query.page as string, 10) : 1;
 
@@ -20,7 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             
             const content = await collection
                 .find()
-                .sort({ 'metadata.priority': -1 })
                 .skip(startIndex)
                 .limit(limit)
                 .toArray();
